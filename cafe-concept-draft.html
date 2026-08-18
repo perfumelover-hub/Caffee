@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Уютное Кафе — Концепт-черновик</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E7; --cream-dark:#F0E2CB; --paper:#FFFDF8;
+    --brown:#8A5A3B; --brown-dark:#4A3428;
+    --pink:#F0A6A0; --pink-dark:#D97F82;
+    --mint:#93AE86; --mint-dark:#5C7855;
+    --yellow:#F0BF52; --yellow-dark:#C9962E;
+    --blue:#8FB4C9;
+    --shadow:0 10px 26px rgba(74,52,40,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; font-family:'Nunito',sans-serif; color:var(--brown-dark);
+    background: radial-gradient(1400px 900px at 15% -10%, #fff8ee 0%, var(--cream) 45%, var(--cream-dark) 100%);
+  }
+  h1,h2,h3,h4{font-family:'Baloo 2',cursive; margin:0;}
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 20px;}
+
+  /* NAV */
+  nav.topnav{
+    position:sticky; top:0; z-index:50; backdrop-filter:blur(6px);
+    background:rgba(255,253,248,0.9); border-bottom:2px solid var(--cream-dark);
+  }
+  nav.topnav .wrap{display:flex; align-items:center; gap:6px; padding:10px 20px; overflow-x:auto;}
+  nav.topnav .logo{font-family:'Baloo 2',cursive; font-weight:800; font-size:1.15rem; margin-right:14px; white-space:nowrap;}
+  nav.topnav a.navlink{
+    white-space:nowrap; font-weight:700; font-size:0.85rem; color:var(--brown);
+    padding:7px 12px; border-radius:999px; text-decoration:none; transition:.15s;
+  }
+  nav.topnav a.navlink:hover{background:var(--cream-dark);}
+
+  /* HERO */
+  header.hero{padding:70px 20px 50px; text-align:center;}
+  .eyebrow{
+    display:inline-block; font-weight:800; font-size:0.78rem; letter-spacing:.08em; text-transform:uppercase;
+    background:var(--paper); border:2px dashed var(--pink-dark); color:var(--pink-dark);
+    padding:6px 16px; border-radius:999px; margin-bottom:18px;
+  }
+  header.hero h1{font-size:clamp(2.1rem, 5vw, 3.2rem); color:var(--brown-dark); line-height:1.15;}
+  header.hero h1 span{color:var(--mint-dark);}
+  header.hero p.tagline{max-width:620px; margin:16px auto 0; font-size:1.1rem; color:var(--brown); font-weight:600;}
+  .tags{display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:22px;}
+  .tag{background:var(--paper); border:2px solid var(--cream-dark); padding:6px 14px; border-radius:999px; font-weight:800; font-size:0.82rem; color:var(--brown-dark);}
+
+  /* LOOP DIAGRAM */
+  .loop{
+    display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:10px; margin-top:38px;
+  }
+  .loop-step{
+    background:var(--paper); border:2px solid #fff; box-shadow:var(--shadow); border-radius:20px;
+    padding:16px 18px; width:150px; text-align:center;
+  }
+  .loop-step .num{
+    width:30px; height:30px; border-radius:50%; background:var(--brown); color:#fff; font-weight:800;
+    display:flex; align-items:center; justify-content:center; margin:0 auto 8px;
+  }
+  .loop-step h4{font-size:0.92rem;}
+  .loop-arrow{font-size:1.6rem; color:var(--pink-dark);}
+
+  /* SECTIONS */
+  section{padding:64px 20px;}
+  section.alt{background:var(--paper); border-top:2px solid var(--cream-dark); border-bottom:2px solid var(--cream-dark);}
+  .section-head{max-width:640px; margin:0 auto 34px; text-align:center;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  .section-head h2{font-size:2rem; color:var(--brown-dark);}
+  .section-head p{color:var(--brown); font-weight:600; margin-top:8px;}
+
+  .scallop{height:26px; background:
+    radial-gradient(circle at 10px 0, transparent 12px, var(--paper) 13px) 0 0/26px 26px repeat-x;
+  }
+  section.alt + .scallop-bottom, .scallop-bottom{
+    height:26px; margin-top:-2px; background:
+    radial-gradient(circle at 10px 26px, transparent 12px, var(--paper) 13px) 0 0/26px 26px repeat-x;
+  }
+
+  /* GRID CARDS */
+  .grid{display:grid; gap:18px;}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr);}
+  .grid.cols-4{grid-template-columns:repeat(4,1fr);}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr);}
+  @media(max-width:820px){ .grid.cols-3,.grid.cols-4{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:560px){ .grid.cols-2,.grid.cols-3,.grid.cols-4{grid-template-columns:1fr;} }
+
+  .card{
+    background:var(--paper); border-radius:20px; padding:20px; box-shadow:var(--shadow); border:2px solid #fff;
+  }
+  section.alt .card{background:var(--cream); border-color:var(--cream-dark);}
+  .card .icon{font-size:1.7rem; margin-bottom:8px; display:block;}
+  .card h4{font-size:1.02rem; margin-bottom:6px;}
+  .card p{font-size:0.88rem; line-height:1.5; margin:0; color:#5c4a3a;}
+
+  /* stat bars */
+  .stat{display:flex; align-items:center; gap:8px; margin-top:6px; font-size:0.78rem; font-weight:700;}
+  .stat .bar{flex:1; height:8px; background:var(--cream-dark); border-radius:6px; overflow:hidden;}
+  .stat .bar i{display:block; height:100%; border-radius:6px; background:var(--mint-dark);}
+  .stat.q i{background:var(--yellow-dark);}
+  .stat.r i{background:var(--pink-dark);}
+
+  /* equipment tier row */
+  .tier-row{display:grid; grid-template-columns:1fr 1fr 1fr 1fr; gap:14px; margin-top:8px;}
+  @media(max-width:760px){ .tier-row{grid-template-columns:1fr 1fr;} }
+  .tier-card{background:var(--paper); border:2px solid var(--cream-dark); border-radius:16px; padding:14px; text-align:center;}
+  .tier-card .cup{font-size:1.6rem;}
+  .tier-card h5{font-size:0.85rem; margin:6px 0 2px;}
+  .tier-card span{font-size:0.72rem; color:var(--brown); font-weight:700;}
+
+  /* customer flip cards */
+  .cust-card{
+    background:var(--paper); border-radius:20px; padding:20px; box-shadow:var(--shadow); border:2px solid #fff;
+    position:relative; overflow:hidden;
+  }
+  .cust-card .face{font-size:2rem;}
+  .cust-card h4{margin:8px 0 4px;}
+  .cust-card .trait{display:inline-block; font-size:0.72rem; font-weight:800; padding:3px 10px; border-radius:999px; margin:2px 3px 8px 0;}
+  .trait.good{background:#E4EEDD; color:var(--mint-dark);}
+  .trait.bad{background:#FBE3E1; color:var(--pink-dark);}
+  .trait.neutral{background:#FCEFD6; color:var(--yellow-dark);}
+
+  /* menu list */
+  .menu-cols{display:grid; grid-template-columns:repeat(2,1fr); gap:26px;}
+  @media(max-width:700px){.menu-cols{grid-template-columns:1fr;}}
+  .menu-cat h4{color:var(--brown-dark); border-bottom:2px dashed var(--pink-dark); padding-bottom:8px; margin-bottom:12px; font-size:1.1rem;}
+  .menu-item{display:flex; justify-content:space-between; gap:10px; padding:7px 0; font-size:0.92rem; font-weight:600; border-bottom:1px dotted var(--cream-dark);}
+  .menu-item span.desc{font-weight:400; color:var(--brown); display:block; font-size:0.78rem;}
+
+  /* risk flow */
+  .flow{display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:8px; margin:26px 0;}
+  .flow-node{background:var(--paper); border:2px solid var(--pink-dark); border-radius:16px; padding:12px 16px; font-weight:800; font-size:0.88rem; box-shadow:var(--shadow); text-align:center;}
+  .flow-node.warn{border-color:var(--yellow-dark); background:#FFF7E4;}
+  .flow-arrow{color:var(--pink-dark); font-size:1.3rem;}
+  .verdicts{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:10px;}
+  @media(max-width:700px){.verdicts{grid-template-columns:1fr;}}
+  .verdict{background:var(--paper); border-radius:16px; padding:16px; border:2px solid var(--cream-dark); text-align:center;}
+  .verdict h5{font-size:0.9rem; margin-bottom:6px;}
+  .verdict p{font-size:0.8rem; color:var(--brown); margin:0;}
+
+  /* economy */
+  .money-cols{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media(max-width:700px){.money-cols{grid-template-columns:1fr;}}
+  .money-box{background:var(--paper); border-radius:20px; padding:20px; box-shadow:var(--shadow); border:2px solid #fff;}
+  .money-box h4{margin-bottom:10px;}
+  .money-box ul{margin:0; padding-left:20px; font-size:0.9rem; line-height:1.9;}
+  .money-box.in h4{color:var(--mint-dark);}
+  .money-box.out h4{color:var(--pink-dark);}
+
+  /* roadmap timeline */
+  .timeline{position:relative; margin-top:20px; padding-left:26px; border-left:3px dashed var(--pink-dark);}
+  .tstep{position:relative; margin-bottom:26px;}
+  .tstep::before{
+    content:''; position:absolute; left:-35px; top:2px; width:16px; height:16px; border-radius:50%;
+    background:var(--mint-dark); border:3px solid var(--paper); box-shadow:0 0 0 2px var(--mint-dark);
+  }
+  .tstep h4{font-size:1rem;}
+  .tstep p{margin:4px 0 0; font-size:0.88rem; color:var(--brown);}
+
+  /* multiplayer phases */
+  .phases{display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:20px;}
+  .phase{background:var(--paper); border:2px solid var(--cream-dark); border-radius:18px; padding:16px 20px; width:220px; text-align:center;}
+  .phase .lvl{font-size:0.72rem; font-weight:800; color:var(--brown); text-transform:uppercase;}
+  .phase h4{margin:6px 0;}
+
+  footer{text-align:center; padding:40px 20px; font-size:0.82rem; color:var(--brown);}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <span class="logo">☕ Уютное Кафе</span>
+    <a class="navlink" href="#loop">Цикл</a>
+    <a class="navlink" href="#equipment">Оборудование</a>
+    <a class="navlink" href="#drinks">Меню</a>
+    <a class="navlink" href="#customers">Клиенты</a>
+    <a class="navlink" href="#business">Бизнес</a>
+    <a class="navlink" href="#risk">Риски и суд</a>
+    <a class="navlink" href="#economy">Экономика</a>
+    <a class="navlink" href="#multiplayer">С друзьями</a>
+    <a class="navlink" href="#roadmap">Дорожная карта</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Черновик · концепт-документ</span>
+    <h1>Кафе, которое ты <span>обустраиваешь и ведёшь по-настоящему</span></h1>
+    <p class="tagline">2D-симулятор кафе с реалистичным профессиональным оборудованием, характерными клиентами
+      и настоящим бизнес-риском — от лицензий до суда.</p>
+    <div class="tags">
+      <span class="tag">🎨 Векторная 2D-графика</span>
+      <span class="tag">☕ Реальное оборудование</span>
+      <span class="tag">🧑‍🤝‍🧑 Клиенты с характером</span>
+      <span class="tag">📋 Лицензии и инспекции</span>
+      <span class="tag">⚖️ Суд и жалобы</span>
+      <span class="tag">🤝 Кооп с друзьями</span>
+    </div>
+
+    <div class="loop" id="loop">
+      <div class="loop-step"><div class="num">1</div><h4>Клиент приходит</h4></div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-step"><div class="num">2</div><h4>Готовим заказ</h4></div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-step"><div class="num">3</div><h4>Оценка / чаевые</h4></div>
+      <div class="loop-arrow">→</div>
+      <div class="loop-step"><div class="num">4</div><h4>Апгрейды и бизнес</h4></div>
+    </div>
+  </div>
+</header>
+
+<div class="scallop"></div>
+
+<!-- EQUIPMENT -->
+<section id="equipment">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Система 1</span>
+      <h2>Профессиональное оборудование</h2>
+      <p>Каждый инструмент существует в нескольких тирах — визуально разных и с разными характеристиками.</p>
+    </div>
+
+    <div class="grid cols-3">
+      <div class="card"><span class="icon">☕</span><h4>Кофемашины</h4><p>Рожковая → капельная → автоматическая эспрессо-станция. Основа для эспрессо, американо, ристретто.</p></div>
+      <div class="card"><span class="icon">⚙️</span><h4>Кофемолки</h4><p>Ручная → электрическая → жерновая профессиональная. Помол влияет на вкус и скорость приготовления.</p></div>
+      <div class="card"><span class="icon">🥛</span><h4>Питчеры и стимеры</h4><p>Простой питчер → паровая трубка → автовспениватель. Молочная пена для капучино и латте.</p></div>
+      <div class="card"><span class="icon">🥤</span><h4>Сифоны и дозаторы</h4><p>Ручной сифон → автодозатор на несколько вкусов. Газировка и ароматизированные сиропы.</p></div>
+      <div class="card"><span class="icon">🍹</span><h4>Блендеры</h4><p>Бытовой → барный профессиональный. Смузи, фраппе, ледяные напитки.</p></div>
+      <div class="card"><span class="icon">🍋</span><h4>Прочее</h4><p>Соковыжималка, чайник для чая, шейкер для лимонадов — доп. линейка напитков.</p></div>
+    </div>
+
+    <h3 style="margin-top:40px; font-size:1.15rem; text-align:center;">Пример прогрессии: кофемашина</h3>
+    <div class="tier-row">
+      <div class="tier-card">
+        <div class="cup">☕</div><h5>Бытовая</h5><span>150 монет</span>
+        <div class="stat"><span>⚡</span><div class="bar"><i style="width:35%"></i></div></div>
+        <div class="stat q"><span>✦</span><div class="bar"><i style="width:45%"></i></div></div>
+        <div class="stat r"><span>🔧</span><div class="bar"><i style="width:50%"></i></div></div>
+      </div>
+      <div class="tier-card">
+        <div class="cup">☕☕</div><h5>Полупрофессиональная</h5><span>600 монет</span>
+        <div class="stat"><span>⚡</span><div class="bar"><i style="width:60%"></i></div></div>
+        <div class="stat q"><span>✦</span><div class="bar"><i style="width:75%"></i></div></div>
+        <div class="stat r"><span>🔧</span><div class="bar"><i style="width:75%"></i></div></div>
+      </div>
+      <div class="tier-card">
+        <div class="cup">☕☕☕</div><h5>Профессиональная (3 рожка)</h5><span>1800 монет</span>
+        <div class="stat"><span>⚡</span><div class="bar"><i style="width:88%"></i></div></div>
+        <div class="stat q"><span>✦</span><div class="bar"><i style="width:92%"></i></div></div>
+        <div class="stat r"><span>🔧</span><div class="bar"><i style="width:88%"></i></div></div>
+      </div>
+      <div class="tier-card">
+        <div class="cup">👑</div><h5>Премиум</h5><span>3500+ монет</span>
+        <div class="stat"><span>⚡</span><div class="bar"><i style="width:97%"></i></div></div>
+        <div class="stat q"><span>✦</span><div class="bar"><i style="width:99%"></i></div></div>
+        <div class="stat r"><span>🔧</span><div class="bar"><i style="width:95%"></i></div></div>
+      </div>
+    </div>
+    <p style="text-align:center; font-size:0.78rem; color:var(--brown); margin-top:10px;">⚡ скорость &nbsp; ✦ качество &nbsp; 🔧 надёжность — иллюстративные значения, требуют баланса</p>
+  </div>
+</section>
+
+<div class="scallop-bottom"></div>
+<section class="alt" id="drinks">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Система 2</span>
+      <h2>Меню напитков</h2>
+      <p>Каждый напиток = база + жидкость/молоко + топпинги, привязанные к конкретному оборудованию.</p>
+    </div>
+    <div class="menu-cols">
+      <div class="menu-cat">
+        <h4>Кофе</h4>
+        <div class="menu-item">Эспрессо / Ристретто / Американо<span class="desc">Кофемашина + кофемолка</span></div>
+        <div class="menu-item">Капучино / Латте / Флэт уайт<span class="desc">+ питчер / паровая трубка</span></div>
+        <div class="menu-item">Мокко / Раф<span class="desc">+ сиропы, сливки</span></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Какао и шоколад</h4>
+        <div class="menu-item">Классический горячий шоколад<span class="desc">Молоко + какао-база</span></div>
+        <div class="menu-item">Пряный шоколад<span class="desc">+ корица, мускат</span></div>
+        <div class="menu-item">С маршмеллоу<span class="desc">Топпинг</span></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Смузи</h4>
+        <div class="menu-item">Фруктовые / ягодные<span class="desc">Блендер</span></div>
+        <div class="menu-item">С протеином / семенами чиа<span class="desc">Премиум-добавки</span></div>
+      </div>
+      <div class="menu-cat">
+        <h4>Лимонады и холодное</h4>
+        <div class="menu-item">Классический лимонад<span class="desc">Сифон / шейкер</span></div>
+        <div class="menu-item">Ягодный, тархун-стиль<span class="desc">+ сиропы</span></div>
+        <div class="menu-item">Чай и травяные напитки<span class="desc">"Простая" линейка</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CUSTOMERS -->
+<section id="customers">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Система 3</span>
+      <h2>Клиенты и архетипы</h2>
+      <p>Характер клиента определяет терпение, требовательность и вероятность жалобы/чаевых.</p>
+    </div>
+    <div class="grid cols-3">
+      <div class="cust-card">
+        <span class="face">😊</span><h4>Добрый</h4>
+        <span class="trait good">Терпелив</span><span class="trait good">Прощает ошибки</span>
+        <p>Почти всегда оставляет чаевые, редко жалуется даже при небольшой неточности.</p>
+      </div>
+      <div class="cust-card">
+        <span class="face">😠</span><h4>Вредный</h4>
+        <span class="trait bad">Придирчив</span><span class="trait bad">Риск жалобы</span>
+        <p>Может пожаловаться даже при верном заказе — источник несправедливого, но реалистичного риска.</p>
+      </div>
+      <div class="cust-card">
+        <span class="face">🤪</span><h4>Глупый</h4>
+        <span class="trait neutral">Путаный заказ</span>
+        <p>Нечётко формулирует заказ — часть деталей нужно уточнять или угадывать по контексту.</p>
+      </div>
+      <div class="cust-card">
+        <span class="face">🤓</span><h4>Умный</h4>
+        <span class="trait neutral">Замечает детали</span><span class="trait good">Щедрые чаевые</span>
+        <p>Строго проверяет соответствие рецепту, но щедро вознаграждает за точность.</p>
+      </div>
+      <div class="cust-card">
+        <span class="face">🧐</span><h4>Заумный (эксперт)</h4>
+        <span class="trait neutral">Сложный заказ</span><span class="trait good">Высокая награда</span>
+        <p>Знает тонкости — температуру молока, происхождение зерна. Самый сложный, но самый прибыльный тип.</p>
+      </div>
+      <div class="cust-card">
+        <span class="face">🎭</span><h4>Комбинации</h4>
+        <span class="trait neutral">На будущее</span>
+        <p>Архетипы можно смешивать («добрый, но заумный») для разнообразия без роста объёма контента.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="scallop-bottom"></div>
+<section class="alt" id="business">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Система 4</span>
+      <h2>Бизнес-слой</h2>
+      <p>То, что превращает аркаду в настоящий бизнес с последствиями.</p>
+    </div>
+    <div class="grid cols-4">
+      <div class="card"><span class="icon">📜</span><h4>Лицензия</h4><p>Действует ограниченное время, требует платного продления. Просрочка — штраф или закрытие.</p></div>
+      <div class="card"><span class="icon">🔍</span><h4>Инспекции</h4><p>Плановые и внеплановые визиты. Проверяют чистоту, рецепты, лицензию. Провал бьёт по рейтингу.</p></div>
+      <div class="card"><span class="icon">⭐</span><h4>Рейтинг</h4><p>Растёт от довольных гостей и пройденных инспекций, падает от жалоб и инцидентов.</p></div>
+      <div class="card"><span class="icon">📢</span><h4>Жалобы</h4><p>Подаются даже после ухода клиента. Вес зависит от архетипа. Накопление триггерит инспекцию.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RISK -->
+<section id="risk">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Система 5 · Уникальная фича</span>
+      <h2>Риск отравления и суд</h2>
+      <p>Очень маленький случайный шанс — но с серьёзными и неоднозначными последствиями.</p>
+    </div>
+
+    <div class="flow">
+      <div class="flow-node warn">☣️ Редкий инцидент</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">📢 Жалоба клиента</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-node">⚖️ Судебное разбирательство</div>
+    </div>
+
+    <p style="text-align:center; max-width:640px; margin:0 auto 10px; color:var(--brown); font-weight:600; font-size:0.92rem;">
+      Шанс инцидента снижается хорошим менеджментом — чистотой оборудования и свежестью ингредиентов,
+      а не только удачей. Исход суда неопределён:
+    </p>
+
+    <div class="verdicts">
+      <div class="verdict"><h5>😥 Вина кафе</h5><p>Реальная ошибка/нарушение — штраф и удар по рейтингу.</p></div>
+      <div class="verdict"><h5>🌀 Отравился в другом месте</h5><p>Клиент ошибся или намеренно обвинил не то заведение.</p></div>
+      <div class="verdict"><h5>🎭 Клиент солгал</h5><p>Ложное обвинение ради компенсации — вскрывается расследованием.</p></div>
+    </div>
+
+    <p style="text-align:center; max-width:640px; margin:16px auto 0; color:var(--brown); font-size:0.85rem;">
+      Защита в суде (юрист, доказательства — чеки, поставки, свидетели) стоит денег <strong>независимо от исхода</strong> —
+      это добавляет реальный финансовый риск даже полностью невиновному игроку.
+    </p>
+  </div>
+</section>
+
+<div class="scallop-bottom"></div>
+<section class="alt" id="economy">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Система 6</span>
+      <h2>Экономика</h2>
+      <p>Всё завязано на единую валюту — баланс между ростом и подушкой безопасности.</p>
+    </div>
+    <div class="money-cols">
+      <div class="money-box in">
+        <h4>💰 Доходы</h4>
+        <ul>
+          <li>Оплата заказов</li>
+          <li>Чаевые от довольных клиентов</li>
+          <li>Бонусы за высокий рейтинг</li>
+        </ul>
+      </div>
+      <div class="money-box out">
+        <h4>💸 Расходы</h4>
+        <ul>
+          <li>Оборудование и апгрейды</li>
+          <li>Декор и расширение кафе</li>
+          <li>Продление лицензии</li>
+          <li>Обслуживание оборудования</li>
+          <li>Защита в суде, штрафы</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MULTIPLAYER -->
+<section id="multiplayer">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Работа с друзьями</span>
+      <h2>Путь к мультиплееру</h2>
+      <p>Синхронный кооп — самое сложное технически, поэтому идём поэтапно.</p>
+    </div>
+    <div class="phases">
+      <div class="phase"><div class="lvl">Этап 1 · MVP</div><h4>Одиночная игра</h4><p style="font-size:0.82rem; color:var(--brown);">Полный набор систем выше, полностью играбельно соло.</p></div>
+      <div class="phase"><div class="lvl">Этап 2</div><h4>Асинхронный кооп</h4><p style="font-size:0.82rem; color:var(--brown);">Общее кафе с друзьями, заходите в разное время.</p></div>
+      <div class="phase"><div class="lvl">Этап 3 · Амбициозно</div><h4>Синхронный мультиплеер</h4><p style="font-size:0.82rem; color:var(--brown);">Несколько игроков готовят напитки одновременно на разных станциях.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="scallop-bottom"></div>
+<section class="alt" id="roadmap">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">План разработки</span>
+      <h2>Дорожная карта</h2>
+      <p>Движок — Godot 4.x, скрипты пишутся в связке с Claude, сохранения — локальный JSON.</p>
+    </div>
+    <div class="timeline">
+      <div class="tstep"><h4>1 · Ядро</h4><p>Варка напитков, 1–2 вида оборудования, приём и оценка заказа.</p></div>
+      <div class="tstep"><h4>2 · Клиенты</h4><p>4–5 архетипов с модификаторами терпения и чаевых.</p></div>
+      <div class="tstep"><h4>3 · Прогрессия</h4><p>Полная система оборудования: тиры, покупка, апгрейд.</p></div>
+      <div class="tstep"><h4>4 · Бизнес-слой</h4><p>Лицензии, инспекции, рейтинг, жалобы.</p></div>
+      <div class="tstep"><h4>5 · Риск-слой</h4><p>Отравление → жалоба → суд.</p></div>
+      <div class="tstep"><h4>6 · Обустройство</h4><p>Расширенный декор, влияющий на характеристики кафе.</p></div>
+      <div class="tstep"><h4>7 · Мультиплеер</h4><p>Асинхронный, затем — опционально — синхронный кооп.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>Черновик концепта · собран прямо в чате вместе с тобой ✨ · всегда можно углублять любой раздел отдельно</footer>
+
+</body>
+</html>
